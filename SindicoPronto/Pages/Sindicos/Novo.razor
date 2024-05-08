@@ -1,0 +1,51 @@
+﻿@page "/sindicos/cadastrar"
+@using SindicoPronto.Models
+@using SindicoPronto.Repositories
+@inject ISindicoRepository Repositorio;
+@inject NavigationManager NavigationManager;
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-dark">Cadastrar Novo Síndico</h2>
+            </div>
+        </div>
+        <div class="card-body">
+            <EditForm Model="novoSindico" OnValidSubmit="@(()=>CadastrarSindico())">
+                <DataAnnotationsValidator />
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label>Nome:</label>
+                                <InputText @bind-Value="novoSindico.Nome" class="form-control"></InputText>
+                                <ValidationMessage For="()=>novoSindico.Nome"></ValidationMessage>
+
+                            </div>
+                            <div class="col-2">
+                                <label>Condomínios:</label>
+                                <InputNumber @bind-Value="novoSindico.QtdCondominios" class="form-control"></InputNumber>
+                            </div>
+                            <div class="col-2">
+                                <label></label>
+                                <button type="submit" class="btn btn-outline-dark mt-4"><span class="oi oi-plus" aria-hidden="true"></span>Cadastrar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Sindico novoSindico = new Sindico();
+
+    private async Task CadastrarSindico()
+    {
+        var sindicoNovo = await Repositorio.Create(novoSindico);
+        NavigationManager.NavigateTo("/sindicos");
+    }
+}

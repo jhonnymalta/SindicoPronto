@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SindicoPronto", "SindicoPronto\SindicoPronto.csproj", "{3CA59DBA-D413-4B85-AA78-A773D93F1E7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CA59DBA-D413-4B85-AA78-A773D93F1E7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA59DBA-D413-4B85-AA78-A773D93F1E7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA59DBA-D413-4B85-AA78-A773D93F1E7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA59DBA-D413-4B85-AA78-A773D93F1E7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {769E9EFE-32B1-4FA8-9DF9-DB17F74251D6}
+	EndGlobalSection
+EndGlobal

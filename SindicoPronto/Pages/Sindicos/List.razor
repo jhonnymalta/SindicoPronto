@@ -1,0 +1,59 @@
+﻿@page "/sindicos"
+@using SindicoPronto.Models
+@using SindicoPronto.Repositories
+@inject ISindicoRepository Repositorio;
+@inject NavigationManager NavigationManager;
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-10">
+                <h2 class="text-dark">Síndicos Cadastrados</h2>
+                
+            </div>
+            <div class="col-2">
+                <button class="btn btn-outline-info" @onclick="@(()=>NavigationManager.NavigateTo("/sindicos/cadastrar"))">Cadastrar</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Condomínios</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var sindico in listaSindicos)
+                    {
+                        <tr>
+                            <td>@sindico.Nome</td>
+                            <td class="text-center">@sindico.QtdCondominios</td>
+                            <td>
+                                <a href="sindicos/editar/@sindico.Id" class=" btn btn-success btn-sm"><spn class="oi oi-delete" aria-hidden="true"> Edit</spn></a>
+                                <button @onclick="@(()=>Deletar(sindico.Id))" class="btn btn-danger btn-sm"><spn class="oi oi-delete" aria-hidden="true"> Delete</spn></button>
+                            </td>
+                        </tr>
+                    }
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<Sindico> listaSindicos = new List<Sindico>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaSindicos = await Repositorio.GetAll();
+    }
+
+    private async Task Deletar(int sindicoId)
+    {
+        await Repositorio.Delete(sindicoId);
+        listaSindicos = await Repositorio.GetAll();
+    }
+}
